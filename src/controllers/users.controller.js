@@ -1,6 +1,5 @@
 const firebase = require('../config/db')
 const User = require('../models/users.model')
-const { use } = require('../routes/routes')
 const firestore = firebase.firestore()
 
 module.exports = {
@@ -10,7 +9,7 @@ module.exports = {
             const data = req.body
             console.log(data)
             await firestore.collection('users').doc().set(data)
-            res.send('recod saved successfully')
+            res.status(200).send('record saved successfully')
         }catch(error){
             res.status(400).send(error.message)
         }
@@ -36,14 +35,14 @@ module.exports = {
                     )
                     usersArray.push(user)
                 })
-                res.status(200).send(users)
+                res.status(200).send(usersArray)
             }
         }catch(error){
             res.status(400).send(error.message)
         }
 	},	
     
-	async getUserById(req, res,next) {
+	async getUserById(req, res) {
 		try{
             const id = req.params.id;
             const user = await firestore.collection('users').doc(id)

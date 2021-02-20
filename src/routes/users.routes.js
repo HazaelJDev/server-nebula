@@ -6,11 +6,11 @@ const UsersController = require('../controllers/users.controller')
 //Se enlazan las rutas o peticiones a los controladores que las despacharan
 router.get('/',(req,res) => res.send("Home User"));
 
-//Rutas para administrar el modelo alumno
+//Rutas para administrar la colección de users
 router.post('/register', UsersController.createUser)
 router.get('/getAll', UsersController.getAllUsers)
-router.get('/get/:userId', UsersController.getUserById)
-router.put('/editar/:userId', UsersController.updateUserById)
-router.delete('/eliminar/:userId', UsersController.deleteUserById)
+router.get('/get/:id', UsersController.getUserById)
+router.put('/editar/:id', UsersController.updateUserById)
+router.delete('/eliminar/:id', UsersController.deleteUserById)
 
 module.exports = router;
