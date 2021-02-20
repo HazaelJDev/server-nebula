@@ -58,6 +58,7 @@ module.exports = {
 	
 	async updateRoomById(req, res) {
 		try{
+            const data = req.body;
             const id = req.params.id;
             const room = await firestore.collection('rooms').doc(id)
             await room.update(data);

@@ -1,4 +1,4 @@
-class Users{
+class User {
     constructor(id, email, level, name, points, quest, type){
         this.id = id;
         this.email = email;      
@@ -9,3 +9,4 @@ class Users{
         this.type = type;      
     }
 }
+module.exports = User;

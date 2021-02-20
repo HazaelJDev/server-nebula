@@ -58,6 +58,7 @@ module.exports = {
 	
 	async updateQuestById(req, res) {
 		try{
+            const data = req.body;
             const id = req.params.id;
             const quest = await firestore.collection('quests').doc(id)
             await quest.update(data);

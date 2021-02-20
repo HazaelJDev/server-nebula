@@ -1,3 +1,5 @@
+'use strict';
+
 const firebase = require('../config/db')
 const User = require('../models/users.model')
 const firestore = firebase.firestore()
@@ -24,7 +26,8 @@ module.exports = {
                 res.status(404).send('No user record found')
             }else{
                 data.forEach(doc => {
-                    const user =  new User(
+                    console.log(doc.data())
+                    const user = new User(
                         doc.id,
                         doc.data().email,
                         doc.data().level,
@@ -35,6 +38,7 @@ module.exports = {
                     )
                     usersArray.push(user)
                 })
+                console.log(usersArray)
                 res.status(200).send(usersArray)
             }
         }catch(error){
@@ -59,12 +63,13 @@ module.exports = {
 	
 	async updateUserById(req, res) {
 		try{
+            const data = req.body
             const id = req.params.id;
             const user = await firestore.collection('users').doc(id)
             await user.update(data);
             res.status(200).send('User record updated successfuly')
         }catch(error){
-            res.status(404).send(error.message)
+            res.status(400).send(error.message)
         }
     },	
 	

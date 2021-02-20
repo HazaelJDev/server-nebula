@@ -8,3 +8,5 @@ class Quests{
         this.roomId = roomId;      
     }
 }
+
+module.exports = Quests;

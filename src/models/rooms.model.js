@@ -8,3 +8,5 @@ class Rooms{
         this.teacherId = teacherId;      
     }
 }
+
+module.exports = Rooms;
