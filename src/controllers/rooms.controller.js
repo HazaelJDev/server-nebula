@@ -29,7 +29,7 @@ module.exports = {
                         doc.data().description,
                         doc.data().name,
                         doc.data().questIds,
-                        doc.data().studentsIds,
+                        doc.data().studentIds,
                         doc.data().teacherId
                     )
                     roomsArray.push(room)
