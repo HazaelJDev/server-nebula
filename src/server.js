@@ -65,8 +65,6 @@ io.on("connection", (socket) => {
 
   //Nos suscribimos al evento de llamar a un usuario
   socket.on("callUser", (data) => {
-    console.log("Están llamando - Back-");
-    console.log("ENVIAN VIDEO: ", data);
     io.to(data.userToCall).emit("hey", {
       //Emitimos un evento de regreso al usuario que queremos llamar
       signal: data.signalData,
@@ -75,10 +73,10 @@ io.on("connection", (socket) => {
   });
 
   //Nos suscribimos al evento para crear notificaciones
-  socket.on("createNotification", (data) => {
-    console.log("Estamos llamando s: ", data);
+  socket.on("creandoNotificacion", (data) => {
+    console.log("Estos son nuestros datos: ", data);
     try {
-      io.to(data.userToCall).emit("notification", data);
+      io.sockets.emit("notification", data);
       console.log("Una notificación fue creada!");
     } catch (error) {
       console.log("Error al mandar NOTIFICACIÓN: ", error);
